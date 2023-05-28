@@ -6,7 +6,7 @@
  * Notes:
  * NOT fully operation
  * 2x8 Character display works properly
- * Main File implements current pseudocode for ADC reading and LCD changes. No IoT yet
+ * Main File implements current reads ADC properly. Attempting IoT webhook integration, rev. 1
  */
 
 #include <LCD_ST7032.h>
@@ -18,39 +18,56 @@ SEN_13322 plant;
 
 Timer timer(1000, &SEN_13322::readSequence, plant);
 
-bool notificationNeeded = false;
+bool needsWater = false;
+int daysDry = 0;    // int is supported cloud variable type
+                    // Track how long it has been in days since the plant was last watered
 
-void sendNotification(uint8_t days) {
-  particle.publish("Water-Needed");
-
+/**
+ * @brief Publish a webhook event that triggers IFTTT event
+ * 
+ * 
+ */
+void sendNotification() {
+  particle.publish("Water-Needed", daysDry, PRIVATE);
 }
 
 void setup() {
-  display.begin();
-  display.setcontrast(25);
+    particle.variable("daysDry", daysDry, INT);
+    particle.variable("needsWater", needsWater, BOOLEAN);
 
-  plant.begin(A0, A1); // Pin A0 provides power to moisture sensor, Pin A1 performs ADC
+    display.begin();
+    display.setcontrast(25);
 
-  Serial.begin(9600);
+    plant.begin(A0, A1); // Pin A0 provides power to moisture sensor, Pin A1 performs ADC
 
-  // timer.changePeriod(samplePeriod);  // Take ADC Sample every 10 minutes
-  timer.start();
+    Serial.begin(9600);
+
+    // timer.changePeriod(samplePeriod);  // Take ADC Sample every 10 minutes
+    timer.start();
 }
 
 void loop() {
-  display.setCursor(0,0);
-  display.clear();
-  display.print(plant.getStatus());
-  uint8_t *waterTime = plant.getTimeFromLastWater();
+    /** LCD Print Plant status on first line */
+    display.setCursor(0,0);
+    display.clear();
+    display.print(plant.getStatus());
+    uint8_t *waterTime = plant.getTimeFromLastWater();
 
-  display.setCursor(1,0);
-  display.print(*(waterTime+0), DEC); // Print days
-  display.print(":");
-  display.print(*(waterTime+1), DEC); // Print hours
-  display.print(":");
-  display.print(*(waterTime+2), DEC); // Print minutes
+    if (*(waterTime+0) > daysDry)
+    {
+        daysDry = *(waterTime+0);
+        sendNotification();
+    }
 
-  Serial.println(plant.getMoistureValue());
-  delay(10);
+    /** LCD Print Time since last water on second line */
+    display.setCursor(1,0);
+    display.print(*(waterTime+0), DEC); // Print days
+    display.print(":");
+    display.print(*(waterTime+1), DEC); // Print hours
+    display.print(":");
+    display.print(*(waterTime+2), DEC); // Print minutes
+
+    Serial.println(plant.getMoistureValue());
+    delay(10);
 }
 

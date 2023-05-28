@@ -48,10 +48,10 @@ void SEN_13322::powerOff() {
 void SEN_13322::updateStatus() {
     if (value >= SOAKED) {
         status = " WET :) ";
-        lastWaterTime = Time.now();
     }
     else if (value <= DRY) {
         status = " DRY :( ";
+        lastWaterTime = Time.now();
     }
     else {
         status = "DAMP :| ";
