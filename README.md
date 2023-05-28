@@ -1,35 +1,55 @@
-# Photon_Moisture_Watch
+# Photon Moisture Watch
 
-A Particle project named Photon_Moisture_Watch
+Project created for operation on Particle Photon development board. 
+Compiled and flashed using Particle Workbench VSCode Extension. 
+Created to monitor plant soil moisture using SparkFun Soil Moisture Sensor. 
+The moisture level of the soil is displayed on a 2x8 character I2C LCD display, as well as the time since the last water. 
+To avoid corrosion in the soil moisture sensor, AD conversions are only completed once per 10 minutes, and the sensor receives no power otherwise. 
+In future versions, alerts will be sent using IoT capabilities of Photon board to alert owner when the plant has gone too long without water.
 
-## Welcome to your project!
 
-Every new Particle project is composed of 3 important elements that you'll see have been created in your project directory for Photon_Moisture_Watch.
+## Table of Contents
 
-#### ```/src``` folder:  
-This is the source folder that contains the firmware files for your project. It should *not* be renamed. 
-Anything that is in this folder when you compile your project will be sent to our compile service and compiled into a firmware binary for the Particle device that you have targeted.
+- Requirements
+    - Required Hardware
+    - Required Software
+- Installation
+- Configuration
 
-If your application contains multiple files, they should all be included in the `src` folder. If your firmware depends on Particle libraries, those dependencies are specified in the `project.properties` file referenced below.
 
-#### ```.ino``` file:
-This file is the firmware that will run as the primary application on your Particle device. It contains a `setup()` and `loop()` function, and can be written in Wiring or C/C++. For more information about using the Particle firmware API to create firmware for your Particle device, refer to the [Firmware Reference](https://docs.particle.io/reference/firmware/) section of the Particle documentation.
+## Requirements
 
-#### ```project.properties``` file:  
-This is the file that specifies the name and version number of the libraries that your project depends on. Dependencies are added automatically to your `project.properties` file when you add a library to a project using the `particle library add` command in the CLI or add a library in the Desktop IDE.
+### Required Hardware
 
-## Adding additional files to your project
+- [SparkFun Soil Moisture Sensor](https://www.sparkfun.com/products/13322)
+- [I2C Small LCD Board](https://international.switch-science.com/catalog/1405/)
+- [Particle Photon Developement Board](https://www.adafruit.com/product/2721)
 
-#### Projects with multiple sources
-If you would like add additional files to your application, they should be added to the `/src` folder. All files in the `/src` folder will be sent to the Particle Cloud to produce a compiled binary.
 
-#### Projects with external libraries
-If your project includes a library that has not been registered in the Particle libraries system, you should create a new folder named `/lib/<libraryname>/src` under `/<project dir>` and add the `.h`, `.cpp` & `library.properties` files for your library there. Read the [Firmware Libraries guide](https://docs.particle.io/guide/tools-and-features/libraries/) for more details on how to develop libraries. Note that all contents of the `/lib` folder and subfolders will also be sent to the Cloud for compilation.
+### Required Software
 
-## Compiling your project
+- [Visual Studio Code](https://code.visualstudio.com/download)
+- [Particle Workbench Extension](https://www.particle.io/workbench/)
 
-When you're ready to compile your project, make sure you have the correct Particle device target selected and run `particle compile <platform>` in the CLI or click the Compile button in the Desktop IDE. The following files in your project folder will be sent to the compile service:
 
-- Everything in the `/src` folder, including your `.ino` application file
-- The `project.properties` file for your project
-- Any libraries stored under `lib/<libraryname>/src`
+## Installation
+
+1. Install and set up Particle Workbench VSCode extension
+2. Create new project
+3. Copy **Photon_Moisture_Watch.ino** from repository and place in /src folder in project directory
+4. Copy all files in **Photon_Moisture_Watch/lib** from repository and place in /lib folder in project directory
+5. Compile project to ensure proper installation
+6. Create circuit as shown below (see below)
+7. Water your plants!
+
+![circuit](https://github.com/isaguilfoile/Photon_Moisture_Watch/assets/118629718/fd822386-a774-4344-a520-9dfce3a240a3)
+
+
+## Project created by:
+
+Isaiah Guilfoile 2023
+
+
+### Copyright Statement
+
+© 2023 Isaiah Guilfoile
