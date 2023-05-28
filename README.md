@@ -35,3 +35,5 @@ Create a new project, properly copying lib/ and /src from this repository. Photo
 
 ## Configuration
 
+![circuit-2](https://github.com/isaguilfoile/Photon-Moisture-Watch/assets/118629718/040f5004-2bf0-4d34-9bfe-bfa4291aea60)
+
