@@ -7,6 +7,14 @@
  * Created for gaining digital values at different moisture states
  */
 
+
+////////////////////////////////////////
+// Dry*          -- 
+// Kinda Wet     -- 
+// Moist         -- 
+// Soaked*       -- 
+////////////////////////////////////////
+
 #include <LCD_ST7032.h>
 #include <SEN_13322.h>
 #include "Particle.h"
@@ -39,6 +47,6 @@ void loop() {
     display.print(*(waterTime+2), DEC); // Print minutes
 
     Serial.println(plant.getMoistureValue());
-    delay(500);
+    delay(10);
 }
 
