@@ -1,12 +1,12 @@
 /**
- * File: SEN_13322.h
- * Author: Isaiah Guilfoile
- * Date: 05.14.2023
+ * @file SEN_13322.h
+ * @author Isaiah Guilfoile (isaiahguilfoile@gmail.com)
+ * @brief Header file for SEN 13322 Soil Moisture Sensor Class
+ * @version 0.1
+ * @date 2023-05-14
  * 
- * Notes:
- * Master Library for SEN 13322 Soil Moisture Sensor
- * https://www.sparkfun.com/products/13322
- * (c) 2023 Isaiah Guilfoile
+ * @copyright Copyright (c) 2023 Isaiah Guilfoile
+ * 
  */
 
 #ifndef SEN_1322_h
