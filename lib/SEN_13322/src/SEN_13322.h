@@ -13,6 +13,9 @@
 #define SEN_1322_h
 
 #define samplePeriod 10min
+#define SOAKED 3300
+#define DRY 1800
+#define MOIST 2550
 
 #include <Arduino.h>
 
