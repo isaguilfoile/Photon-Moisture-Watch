@@ -33,7 +33,7 @@ void setup() {
 
   Serial.begin(9600);
 
-  // timer.changePeriod(samplePeriod);  // Take ADC Sample every 10 minutes
+  timer.changePeriod(samplePeriod);  // Take ADC Sample every 10 minutes
   timer.start();
 }
 
