@@ -26,11 +26,7 @@ class SEN_13322
         SEN_13322();
 
         /**
-         * @brief Initialize ADC functionality and power for sensor
-         * 
-         * #### Faults
-         * 
-         * - n/a
+         * @brief Initialize ADC functionality and power for sensorS
          * 
          * @param power Pin name of power supply to sensor. Must receive power from I/O pin
          * @param analog Pin name of ADC conversion pin
@@ -40,13 +36,7 @@ class SEN_13322
         /**
          * @brief Perform read sequence as recommended by Sparkfun to limit corrosion. Update status after conversion is complete
          * 
-         * #### Extended Description
-         * 
-         * - Moisture sensor only receives power when performing a read
-         * 
-         * #### Faults
-         * 
-         * - n/a
+         * @note Moisture sensor only receives power when performing a read
          * 
          */
         void readSequence();
@@ -54,12 +44,9 @@ class SEN_13322
         /**
          * @brief Get the Status String from digital moisture value
          * 
-         * #### Extended Description
-         * 
-         * - Status string is given in format fit for LCD Character Display
-         * 
-         * #### Faults
-         * 
+         * @note Status string is given in format fit for LCD Character Display
+
+         * @todo 
          * - Probably inefficient to track moisture status as a String
          * - Conversion from digital value to status String has not been tested yet
          * 
@@ -70,8 +57,7 @@ class SEN_13322
         /**
          * @brief Find how long it has been in days:hours:minutes since the plant was last watered
          * 
-         * #### Faults:
-         * 
+         * @todo
          * - Still have to determine how frequently the plant must be watered
          * 
          * @return uint8_t* Pointer to 3 elem array containing time values
@@ -80,10 +66,6 @@ class SEN_13322
 
         /**
          * @brief Get digital value from moisture sensor at last reading
-         * 
-         * #### Faults
-         * 
-         * - n/a
          * 
          * @return uint16_t moisture value from last ADC sequence
          */
