@@ -18,6 +18,7 @@
 #include <SEN_13322.h>
 #include "Particle.h"
 
+void sendNotification(uint8_t days);
 void setup();
 void loop();
 #line 16 "/Users/isaiahguilfoile/Documents/Photon_Moisture_Watch/src/Photon_Moisture_Watch.ino"
@@ -25,6 +26,13 @@ LCD_ST7032 display;
 SEN_13322 plant;
 
 Timer timer(1000, &SEN_13322::readSequence, plant);
+
+bool notificationNeeded = false;
+
+void sendNotification(uint8_t days) {
+  Particle.publish("Water-Needed");
+
+}
 
 void setup() {
   display.begin();

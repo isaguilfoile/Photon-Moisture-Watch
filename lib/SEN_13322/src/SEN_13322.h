@@ -14,6 +14,9 @@
 
 #define samplePeriod 10min
 
+const uint16_t SOAKED = 3300; // Digital Value after plant has been watered
+const uint16_t DRY = 1800;    // Digital Value when soil is dry
+
 #include <Arduino.h>
 
 class SEN_13322

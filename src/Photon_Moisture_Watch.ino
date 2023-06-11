@@ -21,7 +21,7 @@ Timer timer(1000, &SEN_13322::readSequence, plant);
 bool notificationNeeded = false;
 
 void sendNotification(uint8_t days) {
-  particle.publish("Water-Needed");
+  Particle.publish("Water-Needed");
 
 }
 
@@ -33,7 +33,7 @@ void setup() {
 
   Serial.begin(9600);
 
-  // timer.changePeriod(samplePeriod);  // Take ADC Sample every 10 minutes
+  timer.changePeriod(samplePeriod);  // Take ADC Sample every 10 minutes
   timer.start();
 }
 
